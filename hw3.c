@@ -14,13 +14,25 @@
 void eval(char *cmdline) {
     
     char *args[MAXARGS];
+    char *arg;
+    int count = 0;
 
     fgets(cmdline, MAXLINE, stdin);
     cmdline[(strlen(cmdline)-1)] = '\0';
-    strtok(cmdline, " ");
+    arg = strtok(cmdline, " ");
+    args[count] = arg;
+    count++;
+    while(arg != NULL){
+        arg = strtok(NULL, " ");
+        args[count] = arg;
+        count++;
+    }
+
+    
+    /*
     strcpy(*args, cmdline);
     args[(strlen(*args)-1)] = '\0';
-
+    */
    
 
     if (args[0] == NULL)
@@ -35,6 +47,8 @@ void eval(char *cmdline) {
     } else {
         wait(&status);
     }    
+    pid_t Pid = getppid();
+    //printf("pid: %d status: %d", Pid, status);
     return;
 }
 
