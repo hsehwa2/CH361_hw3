@@ -47,7 +47,7 @@ int main(){
     char cmdline[MAXLINE]; /* Command line */
     while (1) {
     /* Read */
-        printf("CS 361> ");
+        printf("CS361> ");
 
         eval(cmdline);
     }
