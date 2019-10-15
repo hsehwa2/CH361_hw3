@@ -28,7 +28,9 @@ void eval(char *cmdline) {
         count++;
     }
 
-    
+    if (!strcmp(cmdline, "exit")){
+        exit(0);
+    }
     /*
     strcpy(*args, cmdline);
     args[(strlen(*args)-1)] = '\0';
