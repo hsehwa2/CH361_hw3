@@ -47,14 +47,13 @@ void eval(char *cmdline) {
     
     char *args[MAXARGS];
 
-    
-
     fgets(cmdline, MAXLINE, stdin);
     cmdline[(strlen(cmdline)-1)] = '\0';
     strtok(cmdline, " ");
     strcpy(*args, cmdline);
+    args[(strlen(*args)-1)] = '\0';
 
-    printf("args: %s \n", args[0]);
+   
 
     if (args[0] == NULL)
         return; /* Ignore empty lines */
@@ -64,11 +63,9 @@ void eval(char *cmdline) {
     childPid = fork();
 
     if (childPid == 0) {
-        //printf("child : %s %s", args[0], args);
         execvp(args[0], args);
         printf("error");      
     } else {
-        printf("hello \n"); // test to see if it goes into parent
         wait(&status);
     }    
     return;
