@@ -39,16 +39,21 @@ void eval(char *cmdline) {
         return; /* Ignore empty lines */
 
     int status;
-    pid_t childPid; 
+    int childPid; 
     childPid = fork();
 
+    if (childPid < 0){
+        printf("ERROR");
+        return;
+    }
     if (childPid == 0) {
         execvp(args[0], args);    
     } else {
         wait(&status);
+        printf("pid: %d status: %d\n", childPid, WEXITSTATUS(status));
     }    
     
-    printf("pid: %d status: %d\n", childPid, status);
+    
     return;
 }
 
