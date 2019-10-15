@@ -50,7 +50,7 @@ void eval(char *cmdline) {
         execvp(args[0], args);    
     } else {
         wait(&status);
-        printf("pid: %d status: %d\n", childPid, WEXITSTATUS(status));
+        //printf("pid: %d status: %d\n", childPid, WEXITSTATUS(status));
         printf("pid: %d status: %d\n", getpid(), WEXITSTATUS(status));
     }    
     
