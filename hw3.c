@@ -48,7 +48,7 @@ void eval(char *cmdline) {
         wait(&status);
     }    
     pid_t Pid = getppid();
-    printf("pid: %d status: %d", Pid, status);
+    printf("pid: %d status: %d\n", Pid, status);
     return;
 }
 
