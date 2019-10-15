@@ -38,7 +38,7 @@ void eval(char *cmdline) {
     if (args[0] == NULL)
         return; /* Ignore empty lines */
 
-    int status;
+    int status = 0;
     int childPid; 
     childPid = fork();
 
@@ -50,8 +50,8 @@ void eval(char *cmdline) {
         execvp(args[0], args);    
     } else {
         wait(&status);
-        //printf("pid: %d status: %d\n", childPid, WEXITSTATUS(status));
-        printf("pid: %d status: %d\n", getpid(), WEXITSTATUS(status));
+        printf("pid: %d status: %d\n", childPid, WEXITSTATUS(status));
+        //printf("pid: %d status: %d\n", getpid(), WEXITSTATUS(status));
     }    
     
     
